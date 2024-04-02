@@ -16,21 +16,33 @@ public class App {
         double sum = 0;
         String imp;  
         String partition = ",";
-       String[] array;
+       String[] parts;
+       nm.write("****************************************************"+"\n");
+       nm.write("ID#\t\tItem\t\tQuantity\t\tPrice (€).\n");
        while ((imp=nh.readLine()) !=null) {
+           
              System.out.println(imp);
-             array = imp.split(partition);
-             double a = Double.parseDouble(array[3]);
+             parts = imp.split(partition);
+             double a = Double.parseDouble(parts[3]);
              sum+=a;
-             nm.write(imp);
+             String formattedId = parts[0].trim();  
+                String formattedItem = parts[1].trim();  
+                String formattedQuantity = parts[2].trim();  
+                String formattedPrice = parts[3].trim();   
+  
+                
+                String formattedLine = formattedId + "\t\t" + formattedItem + "\t\t" + formattedQuantity + "\t\t" + formattedPrice;
+             nm.write(formattedLine);
              nm.newLine();
 
         }
         DecimalFormat decimalFormat = new DecimalFormat("#.##");  
         String formattedValue = decimalFormat.format(sum);  
         System.out.print("Total price is : " +formattedValue);
+        nm.write("****************************************************"+"\n");
         nm.write("Total price is : "
-        +formattedValue);
+        +formattedValue+"\n");
+        nm.write("****************************************************");
         nh.close();
         nm.flush();
         nm.close();
